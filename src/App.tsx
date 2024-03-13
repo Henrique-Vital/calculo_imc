@@ -13,7 +13,8 @@ const obesiDade = "Obesidade: Seu IMC indica obesidade. Isso pode aumentar signi
 function App() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
-  const [imc, setImc] = useState(null);
+  const [imc, setImc] = useState<string | null>(null);
+
 
   const calculateIMC = () => {
     const heightInMeters = parseFloat(height) / 100;
