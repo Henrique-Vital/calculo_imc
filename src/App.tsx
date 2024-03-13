@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import imcLogo from './assets/imc.png'
 import './App.css'
 
@@ -11,25 +9,25 @@ function App() {
   const [imc, setImc] = useState(null);
 
   const calculateIMC = () => {
-    const heightInMeters = height / 100;
-    const imc = weight / (heightInMeters * heightInMeters);
+    const heightInMeters = parseFloat(height) / 100; // Converter para número
+    const imc = parseFloat(weight) / (heightInMeters * heightInMeters); // Converter para número
     setImc(imc.toFixed(2));
   };
   const abaixoPeso = "“Abaixo do peso”: “Seu IMC está abaixo do normal. Embora estar abaixo do peso nem sempre seja um problema de saúde, é importante conversar com um profissional de saúde para garantir que você está recebendo os nutrientes necessários para manter seu corpo saudável.”" 
   const pesoNormal = " “Peso normal”: “Seu IMC está dentro da faixa normal, o que geralmente indica um equilíbrio saudável entre altura e peso. Continue mantendo um estilo de vida saudável, incluindo uma dieta equilibrada e atividade física regular.” "
   const sobrePeso = "“Sobrepeso”: “Seu IMC indica que você está acima do peso. Isso pode aumentar o risco de certas condições de saúde, como doenças cardíacas e diabetes tipo 2. É recomendável conversar com um profissional de saúde sobre possíveis etapas para alcançar e manter um peso saudável.”"
-  const obesidade = "“Obesidade”: “Seu IMC indica obesidade. Isso pode aumentar significativamente o risco de várias condições de saúde, incluindo doenças cardíacas, diabetes tipo 2 e certos tipos de câncer. É altamente recomendável procurar aconselhamento médico para discutir um plano de gerenciamento de peso.”"
+  const obesiDade = "“Obesidade”: “Seu IMC indica obesidade. Isso pode aumentar significativamente o risco de várias condições de saúde, incluindo doenças cardíacas, diabetes tipo 2 e certos tipos de câncer. É altamente recomendável procurar aconselhamento médico para discutir um plano de gerenciamento de peso.”"
 
   const interpretIMC = () => {
     if (imc) {
-      if (imc < 18.5) {
+      if (parseFloat(imc) < 18.5) {
         return abaixoPeso;
-      } else if (imc < 24.9) {
+      } else if (parseFloat(imc) < 24.9) {
         return pesoNormal;
-      } else if (imc < 29.9) {
+      } else if (parseFloat(imc) < 29.9)) {
         return sobrePeso;
       } else {
-        return obesidade;
+        return obesiDade;
       }
     }
     return "";
